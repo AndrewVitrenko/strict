@@ -16,17 +16,17 @@
 
     <main>
         <div class="poster">
-            <img src="./img/poster.png" alt="background" class="background">
+            <img src="./img/backgrounds/poster_background.png" alt="background" class="background">
             <h1>strict</h1>
             <hr class="delimiter">
             <p class="slogan">STRICT is a respponsive theme with a a clean and minimal look.</p>
             <a href="#" class="call">Call to action</a>
             <span class="arrow_container">
-                <a href="#"></a>
+                <a href="#main_content_start"></a>
             </span>
         </div>
 
-        <div class="style_description">
+        <div class="style_description" id="main_content_start">
             <h2>Simple &amp; pure design</h2>
 
             <p>Designers everywhere gush with admiration upon seeing a web design and exclaim "its so beatiful, its so clean!". There are a countless number of webdesign round-ups dedicated to 'clean' design and it is a term thrown around quite a bit in the web design comunity. It can be easy to spot a good example of clean design.</p>
@@ -34,9 +34,9 @@
 
         <div class="features">
             <div class="feature">
-                <span class="icon">
+                <div class="icon">
                     <img src="./img/mobile.png" alt="phone" class="mobile">
-                </span>
+                </div>
                 <h3>
                     Optimized for all devices
                 </h3>
@@ -46,9 +46,9 @@
             </div>
 
             <div class="feature">
-                <span class="icon">
-                    <i class="fab fa-telegram-plane design"></i>
-                </span>
+                <div class="icon">
+                    <img src="./img/plane.png" alt="plane" class="plane">
+                </div>
                 <h3>
                     clean &amp; minimal design
                 </h3>
@@ -58,9 +58,9 @@
             </div>
 
             <div class="feature">
-                <span class="icon">
-                    <i class="fas fa-bullhorn fontawesome"></i>
-                </span>
+                <div class="icon">
+                    <img src="./img/megaphone.png" alt="megaphone" class="megaphone">
+                </div>
                 <h3>
                     font awesome icon
                 </h3>
@@ -78,41 +78,85 @@
                 <div class="foto">
                     <div class="options">
                         <div class="zoom">
-                            <i class="fas fa-search-plus"></i>
+                            <img src="./img/zoom.png" alt="">
                         </div>
 
                         <div class="link">
-                            <img src="./img/clip_link1.png" alt="">
+                            <img src="./img/clip_link.png" alt="">
                         </div>
-                        <div class="copy_link"></div>
                     </div>
-                    <img src="./img/image_01.png" alt="Expample 1">
+                    <img src="./img/portfolio/image_01.png" alt="Expample 1">
                 </div>
 
                 <div class="foto">
-                    <img src="./img/image_02.png" alt="Expample 2">
+                    <div class="options">
+                        <div class="zoom">
+                            <img src="./img/zoom.png" alt="">
+                        </div>
+
+                        <div class="link">
+                            <img src="./img/clip_link.png" alt="">
+                        </div>
+                    </div>
+                    <img src="./img/portfolio/image_02.png" alt="Expample 2">
                 </div>
 
                 <div class="foto">
-                    <img src="./img/image_03.png" alt="Expample 3">
+                    <div class="options">
+                        <div class="zoom">
+                            <img src="./img/zoom.png" alt="">
+                        </div>
+
+                        <div class="link">
+                            <img src="./img/clip_link.png" alt="">
+                        </div>
+                    </div>
+                    <img src="./img/portfolio/image_03.png" alt="Expample 3">
                 </div>
 
                 <div class="foto">
-                    <img src="./img/image_04.png" alt="Expample 4">
+                    <div class="options">
+                        <div class="zoom">
+                            <img src="./img/zoom.png" alt="">
+                        </div>
+
+                        <div class="link">
+                            <img src="./img/clip_link.png" alt="">
+                        </div>
+                    </div>
+                    <img src="./img/portfolio/image_04.png" alt="Expample 4">
                 </div>
 
                 <div class="foto">
-                    <img src="./img/image_05.png" alt="Expample 5">
+                    <div class="options">
+                        <div class="zoom">
+                            <img src="./img/zoom.png" alt="">
+                        </div>
+
+                        <div class="link">
+                            <img src="./img/clip_link.png" alt="">
+                        </div>
+                    </div>
+                    <img src="./img/portfolio/image_05.png" alt="Expample 5">
                 </div>
 
                 <div class="foto">
-                    <img src="./img/image_06.png" alt="Expample 6">
+                    <div class="options">
+                        <div class="zoom">
+                            <img src="./img/zoom.png" alt="">
+                        </div>
+
+                        <div class="link">
+                            <img src="./img/clip_link.png" alt="">
+                        </div>
+                    </div>
+                    <img src="./img/portfolio/image_06.png" alt="Expample 6">
                 </div>
             </div>
         </div>
 
         <div class="connection">
-            <img src="./img/connection_background.png" alt="" class="background">
+            <img src="./img/backgrounds/connection_background.png" alt="" class="background">
             <h2>Stay with us</h2>
             <p>We ensure quality &amp; support</p>
 
@@ -150,15 +194,18 @@
         let poster = $('.poster');
         let connection = $('.connection')
         let icon = $('.feature .icon')
+        let textarea = $('textarea')
 
         poster.css('height', $(window).width()*0.5)
         connection.css('height', $(window).width()*700/1600)
         icon.css('height', icon.width())
+        //textarea.css('height', textarea.width()*0.28)
 
         $(window).resize(function() {
             poster.css('height', $(window).width()*0.5)
             connection.css('height', $(window).width()*700/1600)
             icon.css('height', icon.width())
+            //textarea.css('height', textarea.width()*0.28)
         })
     </script>
 </body>

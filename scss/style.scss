@@ -20,6 +20,7 @@ html, body {
     width: 100%;
     font-family: 'Lato', sans-serif;
     line-height: 0.7333333;
+    scroll-behavior: smooth;
 }
 
 header {
@@ -98,7 +99,7 @@ header {
 .arrow_container {
     display: block;
 
-    a{
+    /*a{
         width: 0;
         height: 0;
         display: inline-block;
@@ -107,6 +108,31 @@ header {
         transform: rotate(45deg);
         border-style: solid;
         border-color: white;
+    }*/
+
+    a {
+        position: relative;
+        width: 26px;
+        height: 2px;
+        display: inline-block;
+    }
+
+    a:before, a:after {
+        content: '';
+        position: absolute;
+        background-color: white;
+        height: 2px;
+        width: 15px;
+    }
+
+    a:before {
+        transform: rotate(40deg);
+        left: 0;
+    }
+
+    a:after {
+        transform: rotate(-40deg);
+        right: 0;
     }
 }
 
@@ -140,10 +166,14 @@ header {
     align-items: center;
     padding: 65/1600*100% 250/1600*100%;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 .feature {
     flex-basis: 30%;
+    min-width: 220px;
+    margin: 0 auto;
+    margin-bottom: auto;
     
     h3 {
         text-transform: capitalize;
@@ -166,6 +196,7 @@ header {
 }
 
 .feature:first-child {
+
     h3 {
         text-transform: none;
     }
@@ -181,17 +212,29 @@ header {
     background-color: #5fc3ff;
     border-radius: 2px;
 
-    i {
-        color: white;
-        margin: auto;
+    img {
         position: relative;
         z-index: 5;
+    }
+
+    i {
+        color: white;
     }
 }
 
 .mobile {
-    position: relative;
-    z-index: 5;
+    width: 32/100*100%;
+    height: auto;
+}
+
+.plane {
+    width: 42/100*100%;
+    height: auto;
+}
+
+.megaphone {
+    width: 44/100*100%;
+    height: auto;
 }
 
 .design {
@@ -219,7 +262,7 @@ header {
 
     h2 {
         margin-top: 0;
-        font-size: 41px;
+        @include adaptiv-font(41, 28);
         margin-bottom: 30/1600*100%;
         color: $text-blue;
         font-weight: 500;
@@ -236,8 +279,8 @@ header {
 .image_container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .foto {
@@ -262,10 +305,45 @@ header {
     background-color: rgba(#2bacfa, 0.9);
     border-radius: 2px;
     transition: all 0.5s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: -2;
     opacity: 0;
+
+    div {
+        width: 42px;
+        height: 42px;
+        border: 1px solid white;
+        border-radius: 3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s;
+
+        img {
+            width: 14px;
+            height: 14px;
+        }
+    }
 }
 
-.foto:hover .options
+.zoom:hover, .link:hover {
+    background-color: $background_blue;
+}
+
+.foto:hover {
+    .options {
+       z-index: 2;
+       opacity: 1;
+    }
+}
+
+.zoom {
+    margin-right: 10/360*100%;
+}
 
 .connection {
     position: relative;
@@ -316,6 +394,7 @@ header {
 form {
     display: flex;
     flex-wrap: wrap;
+    height: 64.285%;
 
     input {
         background: none;
@@ -352,6 +431,7 @@ form {
         margin-bottom: 20/552*100%;
         display: block;
         resize: none;
+        border: 1px solid $text-gray;
     }
 
     textarea:focus {
@@ -393,7 +473,6 @@ form {
         text-transform: capitalize;
         font-size: 15px;
         height: 15px;
-        display: inline-block;
         margin-top: auto;
         margin-bottom: auto;
     }
@@ -425,7 +504,7 @@ footer {
         background-color: $background_blue;
         height: 40px;
         width: 40px;
-        margin: 0 5/1600*100%;
+        margin: 0 5px;
     }
 
     .icon:before {
@@ -434,5 +513,50 @@ footer {
 
     .icon:first-of-type {
         margin-left: auto;
+    }
+}
+
+@media all and (max-width: 1043px) {
+    .image_container {
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 695px) {
+    .foto {
+        margin-bottom: 10%;
+        min-width: 300px;
+    }
+}
+
+@media all and (max-width: 639px) {
+    .feature {
+        margin-bottom: 7%;
+        min-width: 250px;
+    }
+
+    .connection {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+@media all and (max-width: 550px) {
+    footer {
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+}
+
+@media all and (max-width: 424px) {
+    .works {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
+@media all and (min-width: 1301px) {
+    textarea {
+        height: 160px;
     }
 }

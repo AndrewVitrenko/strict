@@ -7,7 +7,8 @@ html, body {
   margin: 0;
   width: 100%;
   font-family: 'Lato', sans-serif;
-  line-height: 0.7333333; }
+  line-height: 0.7333333;
+  scroll-behavior: smooth; }
 
 header {
   height: 6.1875vw;
@@ -80,18 +81,38 @@ header {
   margin-bottom: 10.9375%; }
 
 .arrow_container {
-  display: block; }
+  display: block;
+  /*a{
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-width: 0 3px 3px 0;
+        padding: 7px;
+        transform: rotate(45deg);
+        border-style: solid;
+        border-color: white;
+    }*/ }
   .arrow_container a {
-    width: 0;
-    height: 0;
-    display: inline-block;
-    border-width: 0 3px 3px 0;
-    padding: 7px;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border-style: solid;
-    border-color: white; }
+    position: relative;
+    width: 26px;
+    height: 2px;
+    display: inline-block; }
+  .arrow_container a:before, .arrow_container a:after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    height: 2px;
+    width: 15px; }
+  .arrow_container a:before {
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+    left: 0; }
+  .arrow_container a:after {
+    -webkit-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+    right: 0; }
 
 .style_description {
   text-align: center;
@@ -126,11 +147,16 @@ header {
   -ms-flex-align: center;
   align-items: center;
   padding: 4.0625% 15.625%;
-  text-align: center; }
+  text-align: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
 
 .feature {
   -ms-flex-preferred-size: 30%;
-  flex-basis: 30%; }
+  flex-basis: 30%;
+  min-width: 220px;
+  margin: 0 auto;
+  margin-bottom: auto; }
   .feature h3 {
     text-transform: capitalize;
     color: #2d3950;
@@ -166,15 +192,23 @@ header {
   position: relative;
   background-color: #5fc3ff;
   border-radius: 2px; }
-  .icon i {
-    color: white;
-    margin: auto;
+  .icon img {
     position: relative;
     z-index: 5; }
+  .icon i {
+    color: white; }
 
 .mobile {
-  position: relative;
-  z-index: 5; }
+  width: 32%;
+  height: auto; }
+
+.plane {
+  width: 42%;
+  height: auto; }
+
+.megaphone {
+  width: 44%;
+  height: auto; }
 
 .design {
   font-size: 43px; }
@@ -197,7 +231,7 @@ header {
   padding: 4.8125% 14.0625%; }
   .works h2 {
     margin-top: 0;
-    font-size: 41px;
+    font-size: calc(28px + 13 * ((100vw - 320px) / 1280));
     margin-bottom: 1.875%;
     color: #2d3950;
     font-weight: 500; }
@@ -215,11 +249,11 @@ header {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  justify-content: space-between; }
 
 .foto {
   -ms-flex-preferred-size: 30%;
@@ -243,22 +277,67 @@ header {
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: -2;
   opacity: 0; }
+  .options div {
+    width: 42px;
+    height: 42px;
+    border: 1px solid white;
+    border-radius: 3px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s; }
+    .options div img {
+      width: 14px;
+      height: 14px; }
 
-.foto:hover .options
+.zoom:hover, .link:hover {
+  background-color: #15a4fa; }
+
+.foto:hover .options {
+  z-index: 2;
+  opacity: 1; }
+
+.zoom {
+  margin-right: 2.77778%; }
+
 .connection {
   position: relative;
   background-color: rgba(45, 57, 80, 0.9);
   padding: 4.6875% 32.75% 6.875% 32.75%; }
-  .foto:hover .options
-.connection h2 {
+  .connection h2 {
     margin-top: 0;
     color: white;
     font-size: 41px;
     margin-bottom: 4.52899%;
     text-align: center; }
-  .foto:hover .options
-.connection p {
+  .connection p {
     color: #999999;
     font-size: 15px;
     margin-bottom: 9.05797%;
@@ -270,7 +349,8 @@ form {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  height: 64.285%; }
   form input {
     background: none;
     border: 1px solid #999999;
@@ -305,7 +385,8 @@ form {
     transition: all 0.2s;
     margin-bottom: 3.62319%;
     display: block;
-    resize: none; }
+    resize: none;
+    border: 1px solid #999999; }
   form textarea:focus {
     border-color: white; }
   form input::-webkit-input-placeholder {
@@ -384,7 +465,6 @@ form {
     text-transform: capitalize;
     font-size: 15px;
     height: 15px;
-    display: inline-block;
     margin-top: auto;
     margin-bottom: auto; }
   form input[type='submit'] {
@@ -418,8 +498,40 @@ footer {
     background-color: #15a4fa;
     height: 40px;
     width: 40px;
-    margin: 0 0.3125%; }
+    margin: 0 5px; }
   footer .icon:before {
     content: none; }
   footer .icon:first-of-type {
     margin-left: auto; }
+
+@media all and (max-width: 1043px) {
+  .image_container {
+    -ms-flex-pack: distribute;
+    justify-content: space-around; } }
+
+@media all and (max-width: 695px) {
+  .foto {
+    margin-bottom: 10%;
+    min-width: 300px; } }
+
+@media all and (max-width: 639px) {
+  .feature {
+    margin-bottom: 7%;
+    min-width: 250px; }
+  .connection {
+    padding-left: 20%;
+    padding-right: 20%; } }
+
+@media all and (max-width: 550px) {
+  footer {
+    padding-left: 7%;
+    padding-right: 7%; } }
+
+@media all and (max-width: 424px) {
+  .works {
+    padding-left: 2%;
+    padding-right: 2%; } }
+
+@media all and (min-width: 1301px) {
+  textarea {
+    height: 160px; } }
