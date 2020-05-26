@@ -501,9 +501,9 @@ footer {
     width: 100%;
     //padding: 25/1600*100% 235/1600*100% 25/1600*100% 225/1600*100%;
     padding-top: calc(5px + 20 * ((100vw - 320px) / 1280));
-    padding-right: calc(7px + 228 * ((100vw - 320px) / 1280));
+    padding-right: calc(10px + 225 * ((100vw - 320px) / 1280));
     padding-bottom: calc(5px + 20 * ((100vw - 320px) / 1280));
-    padding-left: calc(7px + 218 * ((100vw - 320px) / 1280));
+    padding-left: calc(10px + 215 * ((100vw - 320px) / 1280));
 
     p {
         color: $text-gray;

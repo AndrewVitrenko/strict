@@ -485,9 +485,9 @@ footer {
   background-color: #f6f9f9;
   width: 100%;
   padding-top: calc(5px + 20 * ((100vw - 320px) / 1280));
-  padding-right: calc(7px + 228 * ((100vw - 320px) / 1280));
+  padding-right: calc(10px + 225 * ((100vw - 320px) / 1280));
   padding-bottom: calc(5px + 20 * ((100vw - 320px) / 1280));
-  padding-left: calc(7px + 218 * ((100vw - 320px) / 1280)); }
+  padding-left: calc(10px + 215 * ((100vw - 320px) / 1280)); }
   footer p {
     color: #999999;
     font-size: calc(12px + 3 * ((100vw - 320px) / 1280));
