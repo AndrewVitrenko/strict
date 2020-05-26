@@ -197,15 +197,12 @@
         let textarea = $('textarea')
 
         poster.css('height', $(window).width()*0.5)
-        //connection.css('height', $(window).width()*700/1600)
         icon.css('height', icon.width())
-        //textarea.css('height', textarea.width()*0.28)
 
         $(window).resize(function() {
             poster.css('height', $(window).width()*0.5)
             icon.css('height', icon.width())
-            //textarea.css('height', textarea.width()*0.28)
-
+            
             if ($(window).width() >= 1600) {
                 connection.css('height', $(window).width()*700/1600)
             }
