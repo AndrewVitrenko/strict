@@ -10,6 +10,19 @@ $maxWidth: 1600;
 	font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
 }
 
+@mixin adaptiv-width($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    width: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+@mixin adaptiv-padding($pcTopSize, $pcRightSize, $mobTopSize, $mobRightSize) {
+    $addVerticalSize: $pcTopSize - $mobTopSize;
+    $addHorizontalSize: $pcRightSize - $mobRightSize;
+    $maxWidth: $maxWidth - 320;
+    padding: calc(#{$mobTopSize + px} + #{$addVerticalSize} * ((100vw - 320px) / #{$maxWidth})) calc(#{$mobRightSize + px} + #{$addHorizontalSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
 * {
     box-sizing: border-box;
 }
@@ -73,13 +86,13 @@ header {
     color: $background_blue;
     background-color: $background_blue;
     height: 2px;
-    width: 600/1600*100%;
+    @include adaptiv-width(600, 290);
     margin-bottom: 40/1600*100%;
     margin-top: 0;
 }
 
 .slogan {
-    @include adaptiv-font(20, 12);
+    @include adaptiv-font(20, 10);
     color: white;
     margin-bottom: 65/1600*100%;
     margin-top: 0;
@@ -91,29 +104,19 @@ header {
     border: 1px solid $background_blue;
     border-radius: 5px;
     text-decoration: none;
-    padding: 19/1600*100% 35/1600*100%;
+    @include adaptiv-padding(19, 35, 7.6, 14);
     @include adaptiv-font(20, 10);
     margin-bottom: 175/1600*100%;
 }
 
 .arrow_container {
     display: block;
-
-    /*a{
-        width: 0;
-        height: 0;
-        display: inline-block;
-        border-width: 0 3px 3px 0;
-        padding: 7px;
-        transform: rotate(45deg);
-        border-style: solid;
-        border-color: white;
-    }*/
+    height: 15px;
 
     a {
         position: relative;
-        width: 26px;
-        height: 2px;
+        @include adaptiv-width(25, 8);
+        height: 100%;
         display: inline-block;
     }
 
@@ -122,7 +125,8 @@ header {
         position: absolute;
         background-color: white;
         height: 2px;
-        width: 15px;
+        bottom: 50%;
+        @include adaptiv-width(15, 5);
     }
 
     a:before {
@@ -143,7 +147,7 @@ header {
     padding-bottom: 80/1600*100%;
 
     h2 {
-        font-size: 40px;
+        @include adaptiv-font(40, 20);
         color: #2d3950;
         margin-top: 0; 
         font-weight: 500;
@@ -152,7 +156,7 @@ header {
 
     p {
         color: $text-gray;
-        font-size: 20px;
+        @include adaptiv-font(20, 12);
         line-height: 2;
         margin-left: 250/1600*100%;
         margin-right: 250/1600*100%;
@@ -178,14 +182,14 @@ header {
     h3 {
         text-transform: capitalize;
         color: $text-blue;
-        font-size: 22px;
+        @include adaptiv-font(22, 16);
         margin: 32/(1600*0.20625)*100% 0;
     }
     
     p {
         padding-left: 2.4%;
         padding-right: 2.4%;
-        font-size: 15px;
+        @include adaptiv-font(15, 12);
         color: $text-gray;
         line-height: 1.5;
     }
@@ -262,7 +266,7 @@ header {
 
     h2 {
         margin-top: 0;
-        @include adaptiv-font(41, 28);
+        @include adaptiv-font(41, 20);
         margin-bottom: 30/1600*100%;
         color: $text-blue;
         font-weight: 500;
@@ -270,7 +274,7 @@ header {
 
     p {
         margin: 0;
-        font-size: 15px;
+        @include adaptiv-font(15, 12);
         color: #909090;
         margin-bottom: 80/1600*100%;
     }
@@ -348,19 +352,22 @@ header {
 .connection {
     position: relative;
     background-color: rgba($color: $text-blue, $alpha: 0.9);
-    padding: 75/1600*100% 524/1600*100% 110/1600*100% 524/1600*100%;
+    padding-top: calc(30px + 45 * ((100vw - 320px) / 1280));
+    padding-right: calc(20px + 504 * ((100vw - 320px) / 1280));
+    padding-bottom: calc(30px + 80 * ((100vw - 320px) / 1280));
+    padding-left: calc(20px + 504 * ((100vw - 320px) / 1280));
 
     h2 {
         margin-top: 0;
         color: white;
-        font-size: 41px;
+        @include adaptiv-font(41, 20);
         margin-bottom: 25/552*100%;
         text-align: center;
     }
 
     p {
         color: $text-gray;
-        font-size: 15px;
+        @include adaptiv-font(15, 12);
         margin-bottom: 50/552*100%;
         margin-top: 0;
         text-align: center;
@@ -394,7 +401,6 @@ header {
 form {
     display: flex;
     flex-wrap: wrap;
-    height: 64.285%;
 
     input {
         background: none;
@@ -493,18 +499,23 @@ footer {
     align-items: center;
     background-color: $background_gray;
     width: 100%;
-    padding: 25/1600*100% 235/1600*100% 25/1600*100% 225/1600*100%;
+    //padding: 25/1600*100% 235/1600*100% 25/1600*100% 225/1600*100%;
+    padding-top: calc(5px + 20 * ((100vw - 320px) / 1280));
+    padding-right: calc(7px + 228 * ((100vw - 320px) / 1280));
+    padding-bottom: calc(5px + 20 * ((100vw - 320px) / 1280));
+    padding-left: calc(7px + 218 * ((100vw - 320px) / 1280));
 
     p {
         color: $text-gray;
-        font-size: 15px;
+        @include adaptiv-font(15, 12);
+        line-height: normal;
     }
 
     .icon {
         background-color: $background_blue;
-        height: 40px;
         width: 40px;
-        margin: 0 5px;
+        height: 40px;
+        margin: auto 5px;
     }
 
     .icon:before {
@@ -516,9 +527,23 @@ footer {
     }
 }
 
+@media all and (max-width: 1599px) {
+    .connection {
+        .background {
+            height: 100%;
+        }
+    }
+}
+
 @media all and (max-width: 1043px) {
     .image_container {
         justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .call {
+        margin-bottom: 5.5%;
     }
 }
 
@@ -527,36 +552,35 @@ footer {
         margin-bottom: 10%;
         min-width: 300px;
     }
+
+    .works {
+        p {
+            margin-bottom: 7%;
+            margin-top: 3%;
+        }
+    }
 }
 
 @media all and (max-width: 639px) {
-    .feature {
-        margin-bottom: 7%;
-        min-width: 250px;
+    .features {
+        padding-top: 10%;
     }
 
-    .connection {
-        padding-left: 20%;
-        padding-right: 20%;
+    .feature {
+        margin-bottom: 7%;
     }
 }
 
 @media all and (max-width: 550px) {
     footer {
-        padding-left: 7%;
-        padding-right: 7%;
-    }
-}
-
-@media all and (max-width: 424px) {
-    .works {
         padding-left: 2%;
         padding-right: 2%;
     }
 }
 
-@media all and (min-width: 1301px) {
-    textarea {
-        height: 160px;
+@media all and (max-width: 424px) {
+    .works {
+        padding-left: 5%;
+        padding-right: 5%;
     }
 }
